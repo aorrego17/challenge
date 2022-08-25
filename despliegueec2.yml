@@ -13,7 +13,7 @@ Resources:
   TekLoonTestInstance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: ap-southeast-1a
+      AvailabilityZone: us-east-1
       ImageId: !FindInMap
         - RegionEC2InstanceImageMap
         - !Ref 'AWS::Region'
