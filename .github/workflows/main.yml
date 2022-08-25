@@ -7,7 +7,7 @@ on:
         description: 'AWS Region'
         required: true
         default: 'us-east-1'
-       keypair:
+      keypair:
         description: 'SSH Key Pair'
         required: true
 
