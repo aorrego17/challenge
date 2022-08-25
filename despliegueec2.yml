@@ -19,6 +19,7 @@ Resources:
         - !Ref 'AWS::Region'
         - HVM64
       InstanceType: !Ref EC2InstanceType
+      KeyName: 'privatekeyaorrego.pem'
       SecurityGroups:
         - !Ref HTTPSecurityGroup
 
