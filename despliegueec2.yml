@@ -20,7 +20,6 @@ Resources:
         - HVM64
       InstanceType: !Ref EC2InstanceType
       KeyName: 'privatekeyaorrego'
-      Name: 'MV_Prueba'
       SecurityGroups:
         - !Ref HTTPSecurityGroup
 
