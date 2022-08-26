@@ -2,3 +2,7 @@ psutil
 flask
 flask-cors
 simplejson
+pymongo
+python-dotenv
+dnspython
+pymongo[srv]
