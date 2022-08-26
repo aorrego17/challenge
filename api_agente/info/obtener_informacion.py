@@ -1,12 +1,22 @@
+from array import array
 import psutil
 import platform
+from .connection import create_connection
 ## def significa funcion
 def Imprimir_resultados(VersionOS,UsuariosActivos,InfoProcesador,Procesador):
+
+
     array={}
     array['version']=VersionOS
     array['usuarios']=UsuariosActivos
     array['infoproc']=InfoProcesador
     array['procesador']=Procesador
+
+    clients = create_connection()
+    db = clients["pruebas"]
+    collection = db["prueba"]
+    x = {"name": array}
+    collection.insert_one(x)
     return array
 
 def Obtener_info_sistema_operativo():
