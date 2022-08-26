@@ -1,45 +1,66 @@
-on:
-  push:
-    branches: [ main2 ]
-  pull_request:
-    branches: [ main2 ]
+name: Deploy Cluster
 
-name: AWS ECR push
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'AWS Region'
+        required: true
+        default: 'us-east-1'
+      keypair:
+        description: 'SSH Key Pair'
+        required: true
+        default: 'privatekeyaorrego.pem'
 
 jobs:
-  deploy:
-    name: Deploy
+  cluster:
+    name: Deploy stack to AWS
     runs-on: ubuntu-latest
-
+    outputs:
+      env-name: ${{ steps.env-name.outputs.environment }}
     steps:
-    - name: Install Octopus CLI
-      uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
-      with:
-          version: latest
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Configure AWS credentials
+      id: creds
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        aws-region: ${{ github.event.inputs.region}}
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-    - name: Build, tag, and push the image to Amazon ECR
-      id: build-image
+    - name: Configure environment name
+      id: env-name
       env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
-        IMAGE_TAG: "latest"
-
+        REPO: ${{ github.repository }}
       run: |
-        # Build a docker container and push it to ECR 
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        echo "Pushing image to ECR..."
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        ENVIRONMENT=`echo $REPO | tr "/" "-"`
+        echo "Environment name: $ENVIRONMENT"
+        echo "::set-output name=environment::$ENVIRONMENT"
+        
+
+#    - name: Deploy Amazon EKS Cluster
+#      id: eks-cluster
+#      uses: aws-actions/aws-cloudformation-github-deploy@v1
+#      with:
+#        name: Dev-cluster
+#        template: git-eks-deployment.yml
+#        no-fail-on-empty-changeset: "1"
+#        parameter-overrides: >-
+#          AvailabilityZones='us-east-1a',
+#          KeyPairName=${{ github.event.inputs.keypair }},
+#          NumberOfAZs=2,
+#          ProvisionBastionHost=Disabled,
+#          EKSPublicAccessEndpoint=Enabled,
+#          EKSPrivateAccessEndpoint=Enabled,
+#          RemoteAccessCIDR=0.0.0.0/0
+
+
+    - name: Deploy to AWS CloudFormation
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: pruebaalex
+        template: despliegueec2.yml
+        no-fail-on-empty-changeset: "1"
+        parameter-overrides: "EC2InstanceType=t2.small"
