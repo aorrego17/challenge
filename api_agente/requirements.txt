@@ -6,3 +6,5 @@ pymongo
 python-dotenv
 dnspython
 pymongo[srv]
+Flask-PyMongo
+urllib3
