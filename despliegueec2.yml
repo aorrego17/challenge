@@ -22,6 +22,13 @@ Resources:
       KeyName: 'privatekeyaorrego'
       SecurityGroups:
         - !Ref HTTPSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt install git
+          mkdir /meli
+          cd /meli
+          git clone https://github.com/aorrego17/challenge.git
 
   HTTPSecurityGroup:
     Type: AWS::EC2::SecurityGroup
