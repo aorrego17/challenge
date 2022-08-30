@@ -32,8 +32,8 @@ Resources:
           sudo apt-get update
           sudo apt-get install git
           y
-          mkdir /meli
-          cd /meli
+          mkdir /tmp/meli
+          cd /tmp/meli
           git clone https://github.com/aorrego17/challenge.git
 
   HTTPSecurityGroup:
