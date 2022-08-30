@@ -10,7 +10,7 @@ on:
       keypair:
         description: 'SSH Key Pair'
         required: true
-        default: 'testaorrego.pem'
+        default: 'privatekeyaorrego.pem'
 
 jobs:
   cluster:
