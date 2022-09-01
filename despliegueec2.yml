@@ -1,28 +1,48 @@
 ---
-Mappings:
-  RegionEC2InstanceImageMap:
-    us-east-1:
-      HVM64: ami-02c27944e9187fdb0
+#Mappings:
+#  RegionEC2InstanceImageMap:
+#    us-east-1:
+#      HVM64: ami-02c27944e9187fdb0
 
 Parameters:
+  ImageId:
+    Description: AMI para la instancia EC2
+    Type: AWS::EC2::Image::Id
+    Default: ami-02c27944e9187fdb0
+
   EC2InstanceType:
-    Description: The Instance Type Chosen for EC2
+    Description: Tipo de instancia para EC2
     Type: String
+    Default: t2.small
+  
+  VpcId:
+    Description: VPC donde trabajará las instancias
+    Type: AWS::EC2::VPC::Id
+    Default: vpc-0737450a1b99a1593
+  
+  SubnetId:
+    Description: Subnets donde pueden ser creadas las instancias
+    Type: AWS::EC2::Subnet::Id
+    Default: subnet-0d7b725a72a17f794
     
 Resources:
   TekLoonTestInstance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: us-east-1a
-      ImageId: !FindInMap
-        - RegionEC2InstanceImageMap
-        - !Ref 'AWS::Region'
-        - HVM64
+      AvailabilityZone: us-east-1
+      ImageId:
+        - !Ref ImageId
+        #- RegionEC2InstanceImageMap
+        #- !Ref 'AWS::Region'
+        #- HVM64
+      Subnet:
+        - !Ref SubnetId
       Tags:
         -
           Key: Name
-          Value: EC2-Challenge
-      InstanceType: !Ref EC2InstanceType
+          Value: EC2-ChallengeMeLi
+      InstanceType:
+        - !Ref EC2InstanceType
       KeyName: 'privatekeyaorrego'
       SecurityGroups:
         - !Ref HTTPSecurityGroup
@@ -30,12 +50,9 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           sudo apt-get update
-          sudo apt-get install python3-venv
-          y
-          sudo apt-get install python3-pip
-          y
-          sudo apt-get install git
-          y
+          sudo apt-get install python3-venv -y
+          sudo apt-get install python3-pip -y
+          sudo apt-get install git -y
           mkdir /tmp/meli
           cd /tmp/meli
           git clone https://github.com/aorrego17/challenge.git
@@ -43,17 +60,10 @@ Resources:
   HTTPSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable port 80 and port 443
+      GroupName: SG-ChallengeMeLi
+      GroupDescription: Habilitar puerto 22 para administracion desde un origen específico
       SecurityGroupIngress:
-      - CidrIp: 0.0.0.0/0
-        FromPort: 80
-        IpProtocol: tcp
-        ToPort: 80
-      - CidrIp: 0.0.0.0/0
-        FromPort: 443
-        IpProtocol: tcp
-        ToPort: 443
-      - CidrIp: 0.0.0.0/0
+      - CidrIp: 179.15.238.155/32
         FromPort: 22
         IpProtocol: tcp
         ToPort: 22
