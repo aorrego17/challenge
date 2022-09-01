@@ -36,7 +36,7 @@ Resources:
         #- !Ref RegionEC2InstanceImageMap
         #- !Ref 'AWS::Region'
         #- HVM64
-      Subnet:
+      SubnetId:
         - !Ref SubnetId
       Tags:
         -
