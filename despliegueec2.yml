@@ -65,7 +65,7 @@ Resources:
       GroupName: SG-ChallengeMeLi
       GroupDescription: Habilitar puerto 22 para administracion desde un origen especifico
       VpcId:
-        - !Ref VpcId
+        Ref: VpcId
       SecurityGroupIngress:
       - CidrIp: 179.15.238.155/32
         FromPort: 22
