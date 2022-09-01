@@ -45,7 +45,7 @@ Resources:
           Key: Name
           Value: EC2-ChallengeMeLi
       InstanceType:
-        - !Ref EC2InstanceType
+        Ref: EC2InstanceType
       KeyName: 'privatekeyaorrego'
       SecurityGroups:
         - !Ref HTTPSecurityGroup
