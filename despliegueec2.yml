@@ -33,7 +33,7 @@ Resources:
       ImageId:
         Ref: ImageId
         #- !Ref ImageId
-        - #!Ref RegionEC2InstanceImageMap
+        #- !Ref RegionEC2InstanceImageMap
         #- !Ref 'AWS::Region'
         #- HVM64
       Subnet:
