@@ -28,6 +28,8 @@ Parameters:
 Resources:
   TekLoonTestInstance:
     Type: AWS::EC2::Instance
+    DependsOn:
+      - HTTPSecurityGroup
     Properties:
       #AvailabilityZone: us-east-1
       SubnetId:
