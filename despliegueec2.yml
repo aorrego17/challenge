@@ -32,7 +32,7 @@ Resources:
       AvailabilityZone: us-east-1
       ImageId:
         - #!Ref ImageId
-        - RegionEC2InstanceImageMap
+        - !Ref RegionEC2InstanceImageMap
         #- !Ref 'AWS::Region'
         #- HVM64
       Subnet:
