@@ -20,7 +20,7 @@ Parameters:
     Type: AWS::EC2::VPC::Id
     Default: vpc-0737450a1b99a1593
   
-  SubnetId:
+  Subnet:
     Description: Subnets donde pueden ser creadas las instancias
     Type: AWS::EC2::Subnet::Id
     Default: subnet-0d7b725a72a17f794
@@ -32,7 +32,7 @@ Resources:
       - HTTPSecurityGroup
     Properties:
       #AvailabilityZone: us-east-1
-      SubnetId: !Ref SubnetId
+      SubnetId: !Ref Subnet
       ImageId:
         Ref: ImageId
         #- !Ref ImageId
