@@ -16,7 +16,7 @@ Parameters:
     Default: t2.small
   
   VpcId:
-    Description: VPC donde trabajara las instancias
+    Description: VPC donde trabajaran las instancias
     Type: AWS::EC2::VPC::Id
     Default: vpc-0737450a1b99a1593
   
@@ -30,14 +30,14 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       #AvailabilityZone: us-east-1
+      SubnetId:
+        - !Ref SubnetId
       ImageId:
-        Ref: ImageId
+        - !Ref ImageId
         #- !Ref ImageId
         #- !Ref RegionEC2InstanceImageMap
         #- !Ref 'AWS::Region'
         #- HVM64
-      SubnetId:
-        - !Ref SubnetId
       Tags:
         -
           Key: Name
@@ -47,24 +47,27 @@ Resources:
       KeyName: 'privatekeyaorrego'
       SecurityGroups:
         - !Ref HTTPSecurityGroup
-      UserData:
-        Fn::Base64: !Sub |
+      #UserData:
+      #  Fn::Base64: !Sub |
           #!/bin/bash
-          sudo apt-get update
-          sudo apt-get install python3-venv -y
-          sudo apt-get install python3-pip -y
-          sudo apt-get install git -y
-          mkdir /tmp/meli
-          cd /tmp/meli
-          git clone https://github.com/aorrego17/challenge.git
+      #    sudo apt-get update
+      #    sudo apt-get install python3-pip -y
+      #    sudo apt-get install git -y
+      #    mkdir /tmp/meli
+      #    cd /tmp/meli
+      #    git clone https://github.com/aorrego17/challenge.git
+      #    sudo chmod +x ./install.sh
+      #    ./install.sh
 
   HTTPSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: SG-ChallengeMeLi
       GroupDescription: Habilitar puerto 22 para administracion desde un origen especifico
+      VpcId:
+        - !Ref VpcId
       SecurityGroupIngress:
       - CidrIp: 179.15.238.155/32
         FromPort: 22
-        IpProtocol: tcp
         ToPort: 22
+        IpProtocol: tcp
