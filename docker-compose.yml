@@ -1,0 +1,60 @@
+version: '3.1'
+
+networks:
+  # The presence of these objects is sufficient to define them
+  ambientedllo: {}
+
+configs:
+  httpd-config:
+    external: true
+
+services:
+  agente_linux:
+    image: agente_linux_challenge
+#    restart: always
+    build:
+      networks:
+        - ambientedllo
+      dockerfile: ./agente_linux.Dockerfile
+    ports:
+      - "3000:3000"
+    configs:
+      - httpd-config
+  
+  mongodb:
+    image: mongo
+#    restart: always
+    # 
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+
+
+
+
+
+
+#    secrets:
+#      - server-certificate
+#    Dockerfile
+
+#  backend:
+#    image: awesome/database
+#    volumes:
+#      - db-data:/etc/data
+#    networks:
+#      - back-tier
+
+#volumes:
+#  db-data:
+#    driver: flocker
+#    driver_opts:
+#      size: "10GiB"
+
+
+
+#secrets:
+#  server-certificate:
+#    external: true
+
