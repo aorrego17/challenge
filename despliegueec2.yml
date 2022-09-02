@@ -31,7 +31,6 @@ Resources:
     DependsOn:
       - HTTPSecurityGroup
     Properties:
-      #AvailabilityZone: us-east-1
       SubnetId: !Ref Subnet
       ImageId:
         Ref: ImageId
@@ -43,7 +42,7 @@ Resources:
       - Ref: HTTPSecurityGroup
       InstanceType:
         Ref: EC2InstanceType
-      KeyName: 'testlab'
+      KeyName: 'privatekeyaorrego'
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
@@ -67,7 +66,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: SG-ChallengeMeLi
-      GroupDescription: Habilitar puerto 22 para administracion desde un origen especifico
+      GroupDescription: Habilitar puerto 22 para administracion y 3000 para la API
       VpcId:
         Ref: VpcId
       SecurityGroupIngress:
