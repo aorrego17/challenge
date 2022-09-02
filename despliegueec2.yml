@@ -55,8 +55,7 @@ Resources:
           sudo apt-get install docker-ce docker-ce-cli containerd.io -y
           sudo useradd -m -s /bin/bash dockerlabmeli
           sudo usermod -aG docker dockerlabmeli
-          sudo passwd dockerlabmeli "Meli*2022."
-          
+          sudo passwd dockerlabmeli -d
 #          su - dockerlabmeli
 
           
