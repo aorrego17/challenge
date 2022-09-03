@@ -104,7 +104,6 @@ Resources:
       ManagedPolicyArns:
       - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
       Path: "/"
-      RoleName: AutomationServiceRole
 
   ManagedInstanceProfile:
     Type: AWS::IAM::InstanceProfile
