@@ -101,7 +101,7 @@ Resources:
           Principal:
             Service:
             - ssm.amazonaws.com
-            #- ec2.amazonaws.com
+            - ec2.amazonaws.com
           Action: sts:AssumeRole
       ManagedPolicyArns:
       - arn:aws:iam::705856699221:role/SSMRoleChallengeMeLi
