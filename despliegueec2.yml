@@ -104,7 +104,7 @@ Resources:
             - ec2.amazonaws.com
           Action: sts:AssumeRole
       ManagedPolicyArns:
-      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+      - arn:aws:iam::705856699221:role/SSMRoleChallengeMeLi
       #- arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
       Path: "/"
 
