@@ -30,6 +30,7 @@ Resources:
     Type: AWS::EC2::Instance
     DependsOn:
       - HTTPSecurityGroup
+      - AutomationServiceRole
     Properties:
       SubnetId: !Ref Subnet
       ImageId:
