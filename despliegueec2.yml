@@ -49,6 +49,11 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           sudo apt-get update
+          mkdir /tmp/ssm-challengemeli
+          cd /tmp/ssm-challengemeli
+          wget https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb
+          sudo dpkg -i amazon-ssm-agent.deb
+          sudo apt-get update
           sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
           curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
