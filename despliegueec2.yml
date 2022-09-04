@@ -61,8 +61,8 @@ Resources:
 #          sudo usermod -aG docker dockerlabmeli
 #          sudo passwd dockerlabmeli -d
 #          su -i dockerlabmeli
-          docker build -t agentemeli-linux .
-          docker-compose up -d
+#          docker build -t agentemeli-linux .
+#          docker-compose up -d
 #          sudo apt-get install python3-pip -y
 #          sudo apt-get install git -y
 #          mkdir /tmp/challenge_MeLi
