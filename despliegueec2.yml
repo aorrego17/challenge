@@ -62,6 +62,8 @@ Resources:
           mkdir /tmp/challenge_MeLi
           cd /tmp/challenge_MeLi
           git clone https://github.com/aorrego17/challenge.git
+          cd /tmp/challenge_MeLi/challenge
+          docker-compose up -d
 
 #          sudo useradd -m -s /bin/bash dockerlabmeli
 #          sudo usermod -aG docker dockerlabmeli
