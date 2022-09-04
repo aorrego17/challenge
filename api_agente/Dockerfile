@@ -1,8 +1,9 @@
 # FROM comando para descargar imagenes
-FROM ubuntu:jammy-20220815
-RUN apk --no-cache add ca-certificates
+FROM python:latest
 RUN mkdir -p /home/userappmeli && HOME=/home/userappmeli && chmod -R 0755 /home/userappmeli && addgroup -S -g 10101 userappmeli && adduser -S -D -s /sbin/nologin -h /home/userappmeli -G userappmeli userappmeli
 WORKDIR /home/userappmeli
-COPY api_agente/ .
+COPY /bin /cert /lib .env /app.py requirements.txt ./
+RUN pip3 install -r requirements.txt
 WORKDIR /home/userappmeli/api_agente
-CMD ["./install.sh"]
+EXPOSE 3000
+CMD ["python3", "app.py"]

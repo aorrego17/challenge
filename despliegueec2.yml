@@ -71,7 +71,7 @@ Resources:
           sudo useradd -m -s /bin/bash dockerlabmeli
           sudo usermod -aG docker dockerlabmeli
           sudo passwd dockerlabmeli -d
-          su -i dockerlabmeli
+          su - dockerlabmeli
 #          docker-compose up -d
 #          docker build -t agentemeli-linux .
 #          docker-compose up -d
