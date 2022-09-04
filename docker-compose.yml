@@ -1,7 +1,6 @@
-version: '3.1'
+version: '3.7'
 
 networks:
-  # The presence of these objects is sufficient to define them
   ambientedllo: {}
 
 configs:
@@ -9,8 +8,8 @@ configs:
     external: true
 
 services:
-  agente_linux:
-    image: agente_linux_challenge
+  agentemeli_linux:
+    image: agentemeli_linux
 #    restart: always
     build:
       networks:
