@@ -38,7 +38,7 @@ jobs:
     - name: Desplegar el CloudFormation en AWS
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: ChallengeMeLi
+        name: ChallengeMeLiEC2
         template: despliegueec2.yml
         no-fail-on-empty-changeset: "1"
 
