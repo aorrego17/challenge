@@ -13,8 +13,10 @@ import os #entorno
 #acceso y asignacion de variables de entorno
 load_dotenv()
 database = os.getenv("DATABASE")
-user = os.getenv("admin")
-pwd = os.getenv("ChallengeMeli*")
+user = os.getenv("ADMIN")
+pwd = os.getenv("PASSWORD")
+#user = os.getenv("admin")
+#pwd = os.getenv("ChallengeMeli*")
 
 #conexion y validacion a la base de datos
 try:
