@@ -59,23 +59,22 @@ Resources:
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
           sudo apt-get update -y
           sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-          sudo curl -L https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-'uname -s'-'uname -m' -o docker-compose
-          sudo chmod +x docker-compose
-          mv docker-compose /usr/local/bin/docker-compose
-          mkdir /tmp/challenge_MeLi
-          cd /tmp/challenge_MeLi
+          sudo apt install -y curl wget
+          curl -s https://api.github.com/repos/docker/compose/releases/latest | grep browser_download_url  | grep docker-compose-linux-x86_64 | cut -d '"' -f 4 | wget -qi -
+          chmod +x docker-compose-linux-x86_64
+          sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
+#          sudo useradd -m -s /bin/bash dockerlabmeli
+#          sudo usermod -aG docker dockerlabmeli
+#          sudo passwd dockerlabmeli -d
+#          mkdir /tmp/challenge_MeLi
+#          cd /tmp/challenge_MeLi
 #          sudo mv docker-compose-Linux-x86_64 /usr/bin/docker-compose
-  
-
 #          sudo apt-get install python3-pip -y
 #          sudo apt-get install git -y
 #          mkdir /tmp/challenge_MeLi
 #          cd /tmp/challenge_MeLi
 #          git clone https://github.com/aorrego17/challenge.git
 #          cd /tmp/challenge_MeLi/challenge
-#          sudo useradd -m -s /bin/bash dockerlabmeli
-#          sudo usermod -aG docker dockerlabmeli
-#          sudo passwd dockerlabmeli -d
 #          su - dockerlabmeli
 #          
 #          docker build -t agentemeli-linux .
