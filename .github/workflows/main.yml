@@ -41,4 +41,4 @@ jobs:
         name: ChallengeMeLi
         template: despliegueec2.yml
         no-fail-on-empty-changeset: "1"
-        #parameter-overrides: "EC2InstanceType=t2.small"
+
