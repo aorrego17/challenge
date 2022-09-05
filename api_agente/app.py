@@ -13,8 +13,8 @@ import os #entorno
 #acceso y asignacion de variables de entorno
 load_dotenv()
 database = os.getenv("DATABASE")
-user = os.getenv("ADMIN")
-pwd = os.getenv("PASSWORD")
+user = os.getenv("admin")
+pwd = os.getenv("ChallengeMeli*")
 
 #conexion y validacion a la base de datos
 #try:
@@ -29,15 +29,13 @@ pwd = os.getenv("PASSWORD")
 
 
 try:
-    client = MongoClient(f"mongodb+srv://{user}:{pwd}@cluster0.cql9dta.mongodb.net/?retryWrites=true&w=majority",serverSelectionTimeoutMS=3) #tiempo ejecucion para saber si el servidor algo le paso
+    client = MongoClient(f"mongodb://{user}:{pwd}@mongo:27017",serverSelectionTimeoutMS=3) #tiempo ejecucion para saber si el servidor algo le paso
     db = client.informacion_detallada    #seleccionar base de datos
     todos = db.prueba #seleccionar colleccion
     info = client.server_info()
     print(info)
 except ServerSelectionTimeoutError:
     print(f"bd no conectada, registrar ip ")
-
-
 
 
 
