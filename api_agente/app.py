@@ -17,6 +17,17 @@ user = os.getenv("ADMIN")
 pwd = os.getenv("PASSWORD")
 
 #conexion y validacion a la base de datos
+#try:
+#    client = MongoClient(f"mongodb+srv://{user}:{pwd}@cluster0.cql9dta.mongodb.net/?retryWrites=true&w=majority",serverSelectionTimeoutMS=3) #tiempo ejecucion para saber si el servidor algo le paso
+#    db = client.informacion_detallada    #seleccionar base de datos
+#    todos = db.prueba #seleccionar colleccion
+#    info = client.server_info()
+#    print(info)
+#except ServerSelectionTimeoutError:
+#    print(f"bd no conectada, registrar ip ")
+
+
+
 try:
     client = MongoClient(f"mongodb+srv://{user}:{pwd}@cluster0.cql9dta.mongodb.net/?retryWrites=true&w=majority",serverSelectionTimeoutMS=3) #tiempo ejecucion para saber si el servidor algo le paso
     db = client.informacion_detallada    #seleccionar base de datos
@@ -25,6 +36,10 @@ try:
     print(info)
 except ServerSelectionTimeoutError:
     print(f"bd no conectada, registrar ip ")
+
+
+
+
 
 
 #variable global con flask

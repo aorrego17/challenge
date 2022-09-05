@@ -1,7 +1,11 @@
-version: '3.7'
+version: '3'
+
+#networks:
+#  ambientedllo: {}
 
 networks:
-  ambientedllo: {}
+  ambientedllo:
+    driver: bridge
 
 configs:
   httpd-config:
@@ -9,21 +13,22 @@ configs:
 
 services:
   agentemeli_linux:
-    image: agentemeli_linux
-#    restart: always
-    build:
-      networks:
-        - ambientedllo
-      dockerfile: ./agente_linux.Dockerfile
+    image: aorrego17/agentemeli_linux:v1
+    restart: always
+    networks:
+      - ambientedllo
     ports:
       - "3000:3000"
-    configs:
-      - httpd-config
+#    configs:
+#      - httpd-config
   
-  mongodb:
+  mongodb_meli:
     image: mongo
-#    restart: always
-    # 
+    restart: always
+    networks:
+      - ambientedllo
+    ports:
+      - "27017:27017"
     environment: 
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
