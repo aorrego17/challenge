@@ -63,28 +63,21 @@ Resources:
           curl -s https://api.github.com/repos/docker/compose/releases/latest | grep browser_download_url  | grep docker-compose-linux-x86_64 | cut -d '"' -f 4 | wget -qi -
           chmod +x docker-compose-linux-x86_64
           sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
-#          sudo useradd -m -s /bin/bash dockerlabmeli
-#          sudo usermod -aG docker dockerlabmeli
-#          sudo passwd dockerlabmeli -d
-#          mkdir /tmp/challenge_MeLi
-#          cd /tmp/challenge_MeLi
-#          sudo mv docker-compose-Linux-x86_64 /usr/bin/docker-compose
-#          sudo apt-get install python3-pip -y
-#          sudo apt-get install git -y
-#          mkdir /tmp/challenge_MeLi
-#          cd /tmp/challenge_MeLi
-#          git clone https://github.com/aorrego17/challenge.git
-#          cd /tmp/challenge_MeLi/challenge
-#          su - dockerlabmeli
-#          
+          sudo useradd -m -s /bin/bash dockerlabmeli
+          sudo usermod -aG docker dockerlabmeli
+          sudo passwd dockerlabmeli -d
+          mkdir /tmp/challenge_MeLi
+          cd /tmp/challenge_MeLi
+          sudo apt-get install python3-pip -y
+          sudo apt-get install git -y
+          git clone https://github.com/aorrego17/challenge.git
+          cd /tmp/challenge_MeLi/challenge/api_agente
+          docker-compose up -d
+          su - dockerlabmeli        
 #          docker build -t agentemeli-linux .
-#          docker-compose up -d
 #          docker build -t agente-challenge .
 #          docker run agente-challenge
-#          docker-compose up -d
-#          su - dockerlabmeli
-#          sudo chmod +x ./install.sh
-#          ./install.sh
+
 
   HTTPSecurityGroup:
     Type: AWS::EC2::SecurityGroup
