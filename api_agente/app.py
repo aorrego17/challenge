@@ -97,7 +97,7 @@ def page_not_found(error):
 # error conexion
 @app.errorhandler(500)
 def special_exception_handler(error):
-    return {"error" : "Error servidor", "code": 500}, 500
+    return {"error" : "Error servidor", "code": error}, 500
     
 #inicializa el servicio en local y en la ip publica con tls y ssl
 if __name__ == "__main__":
