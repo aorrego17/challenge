@@ -1,4 +1,9 @@
 ### consultar todos
 GET https://127.0.0.1:3000/list HTTP/1.1
 ### agregar
-POST https://127.0.0.1:3000/add HTTP/1.1
+POST https://3.239.148.167:3000/add HTTP/1.1
+Accept: application/json
+
+{
+
+}

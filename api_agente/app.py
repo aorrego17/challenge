@@ -45,7 +45,7 @@ def lists ():
     return dumps(listss), 200
 
 #endpoint agregar
-@app.route("/add", methods=['POST'])
+@app.route("/add", methods=['POST', 'GET'])
 def add ():
             
         NameOS = platform.system()
