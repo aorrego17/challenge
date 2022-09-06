@@ -1,5 +1,5 @@
 # FROM comando para descargar imagenes
-FROM ubuntu:latest
+FROM pyton:3
 RUN mkdir -p /home/userappmeli && HOME=/home/userappmeli
 WORKDIR /home/userappmeli
 COPY cert/ cert/

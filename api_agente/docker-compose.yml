@@ -13,7 +13,7 @@ configs:
 
 services:
   agentemeli_linux:
-    image: aorrego17/agentemeli_linux:v1
+    image: aorrego17/agentemeli_linux:beta
     restart: always
     networks:
       - ambientedllo
