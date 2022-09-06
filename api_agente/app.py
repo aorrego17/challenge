@@ -15,7 +15,6 @@ load_dotenv()
 database = os.getenv("DATABASE")
 user = os.getenv("ADMIN")
 pwd = os.getenv("PASSWORD")
-domain = '127.0.0.1'
 
 #conexion y validacion a la base de datos
 try:
