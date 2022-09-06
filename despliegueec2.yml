@@ -71,10 +71,10 @@ Resources:
           sudo apt-get install python3-pip -y
           sudo apt-get install git -y
           git clone https://github.com/aorrego17/challenge.git
+          su - dockerlabmeli
           cd /tmp/challenge_MeLi/challenge/api_agente
           docker build -t aorrego17/agentemeli_linux:v1 .
-          docker-compose up -d
-          su - dockerlabmeli        
+          docker-compose up -d        
 #          docker build -t agentemeli-linux .
 #          docker build -t agente-challenge .
 #          docker run agente-challenge
