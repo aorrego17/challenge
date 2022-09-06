@@ -72,6 +72,7 @@ Resources:
           sudo apt-get install git -y
           git clone https://github.com/aorrego17/challenge.git
           cd /tmp/challenge_MeLi/challenge/api_agente
+          docker build -t aorrego17/agentemeli_linux:v1 .
           docker-compose up -d
           su - dockerlabmeli        
 #          docker build -t agentemeli-linux .

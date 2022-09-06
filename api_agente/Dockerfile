@@ -1,10 +1,8 @@
 # FROM comando para descargar imagenes
-FROM ubuntu:latest
+FROM python:buster
 RUN mkdir -p /home/userappmeli && HOME=/home/userappmeli
 WORKDIR /home/userappmeli
-COPY bin/ bin/
 COPY cert/ cert/
-COPY lib/ lib/
 COPY .env .
 COPY app.py .
 COPY requirements.txt .
