@@ -3,6 +3,8 @@ FROM python:buster
 RUN mkdir -p /home/userappmeli && HOME=/home/userappmeli
 WORKDIR /home/userappmeli
 COPY cert/ cert/
+COPY bin/ bin/
+COPY lib/ lib/
 COPY .env .
 COPY app.py .
 COPY requirements.txt .
