@@ -6,3 +6,4 @@ COPY . /appmeli
 RUN pip3 install -r requirements.txt
 EXPOSE 3000
 CMD ["python3", "./challenge/app.py"]
+ENTRYPOINT ["curl", "-k", "--request", "POST", "https://127.0.0.1:3000/add"]
