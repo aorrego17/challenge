@@ -73,7 +73,7 @@ Resources:
           git clone https://github.com/aorrego17/challenge.git
           su - dockerlabmeli
           cd /tmp/challenge_MeLi/challenge/challenge
-          docker build -t aorrego17/agentemeli_linux:beta .
+          docker build -t aorrego17/agentemeli_linux:v1 .
           docker-compose up -d
 
 #          docker build -t agentemeli-linux .
