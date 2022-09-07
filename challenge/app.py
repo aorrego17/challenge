@@ -103,4 +103,4 @@ def special_exception_handler(error):
     
 #inicializa el servicio en local y en la ip publica con tls y ssl
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=3000, ssl_context=("./challenge/cert/cert.pem", "./challenge/cert/secret.pem"))
+	app.run(host='0.0.0.0', port=3000, ssl_context=("./cert/cert.pem", "./cert/secret.pem"))
