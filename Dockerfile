@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 RUN apt-get update
-RUN apt-get install python3 wget net-tools python3-pip -y
+RUN apt-get install python3 curl wget net-tools python3-pip -y
 WORKDIR /appmeli
 COPY . /appmeli
 RUN pip3 install -r requirements.txt
