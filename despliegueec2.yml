@@ -85,7 +85,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: SG-ChallengeMeLi
-      GroupDescription: Habilitar puerto 22 para administracion y 3000 para la API
+      GroupDescription: Habilitar puerto 22 para administracion y 4000 para la API
       VpcId:
         Ref: VpcId
       SecurityGroupIngress:
@@ -94,8 +94,8 @@ Resources:
         ToPort: 22
         IpProtocol: tcp
       - CidrIp: 0.0.0.0/0
-        FromPort: 3000
-        ToPort: 3000
+        FromPort: 4000
+        ToPort: 4000
         IpProtocol: tcp
 
   AutomationServiceRole:

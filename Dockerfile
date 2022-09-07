@@ -9,5 +9,5 @@ ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /appmeli
 COPY . /appmeli
 RUN pip3 install -r requirements.txt
-EXPOSE 3000
+EXPOSE 4000
 CMD ["python3", "challenge/app.py"]
