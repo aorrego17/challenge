@@ -1,9 +1,4 @@
 ---
-#Mappings:
-#  RegionEC2InstanceImageMap:
-#    us-east-1:
-#      HVM64: ami-02c27944e9187fdb0
-
 Parameters:
   ImageId:
     Description: AMI para la instancia EC2
@@ -75,11 +70,6 @@ Resources:
           cd /tmp/challenge_MeLi/challenge
           docker build -t aorrego17/agentemeli_linux:v2 .
           docker-compose up -d
-
-#          docker build -t agentemeli-linux .
-#          docker build -t agente-challenge .
-#          docker run agente-challenge
-
 
   HTTPSecurityGroup:
     Type: AWS::EC2::SecurityGroup

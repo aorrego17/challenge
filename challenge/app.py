@@ -25,8 +25,6 @@ try:
 except ServerSelectionTimeoutError:
     print(f"bd no conectada, registrar ip ")
 
-
-
 #variable global con flask
 app = Flask(__name__)
 
