@@ -72,7 +72,7 @@ Resources:
           sudo apt-get install git -y
           git clone https://github.com/aorrego17/challenge.git
           su - dockerlabmeli
-          cd /tmp/challenge_MeLi/challenge/challenge
+          cd /tmp/challenge_MeLi/challenge
           docker build -t aorrego17/agentemeli_linux:v2 .
           docker-compose up -d
 
