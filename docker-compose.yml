@@ -18,6 +18,6 @@ services:
     networks:
       - ambientedllo
     ports:
-      - "3000:3000"
+      - "4000:4000"
 #    configs:
 #      - httpd-config
