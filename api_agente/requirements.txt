@@ -1,8 +1,0 @@
-psutil
-flask
-flask-cors
-pymongo
-python-dotenv
-dnspython
-pymongo[srv]
-Flask-PyMongo

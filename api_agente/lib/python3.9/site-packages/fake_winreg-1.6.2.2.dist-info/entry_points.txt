@@ -1,2 +1,0 @@
-[console_scripts]
-fake_winreg = fake_winreg.fake_winreg_cli:cli_main
